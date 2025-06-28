@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>AnimeClassica | گالری شاهکارهای انیمه کلاسیک</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="موزه دیجیتال انیمه‌های کلاسیک - از آکیرا تا کابوی بیباپ">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    /* سیستم طراحی Atomic */
+    :root {
+      /* رنگ‌های تم */
+      --primary: #FF9E3F;
+      --primary-dark: #E67E22;
+      --primary-light: #FFB76B;
+      --secondary: #2C3E50;
+      --secondary-light: #34495E;
+      --accent: #E74C3C;
+      --dark: #0F0F12;
+      --darker: #0A0A0C;
+      --dark-light: #1A1A21;
+      --light: #F5F7FA;
+      --lighter: #FFFFFF;
+      --gray: #95A5A6;
+      --gray-dark: #7F8C8D;
+      
+      /* سایه‌ها */
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.25);
+      --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.35);
+      --shadow-primary: 0 5px 20px rgba(255, 158, 63, 0.3);
+      
+      /* انیمیشن‌ها */
+      --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      /* حاشیه‌ها */
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-full: 9999px;
+    }
+    
+    /* ریست پایه */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      line-height: 1.8;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    /* تایپوگرافی */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 800;
+      line-height: 1.3;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    /* اسکرول بار سفارشی */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--dark-light);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 6px;
+      border: 3px solid var(--dark-light);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-light);
+    }
+    
+    /* کامپوننت هدر */
+    .header {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      background: rgba(15, 15, 18, 0.95);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      padding: 18px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-normal);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .header.scrolled {
+      padding: 12px 5%;
+      background: rgba(10, 10, 12, 0.98);
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--primary);
+      transition: var(--transition-normal);
+    }
+    
+    .logo:hover {
+      transform: scale(1.05);
+      color: var(--lighter);
+    }
+    
+    .logo-icon {
+      font-size: 2rem;
+      color: var(--accent);
+    }
+    
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    
+    .nav-list {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+    
+    .nav-link {
+      position: relative;
+      padding: 8px 0;
+      font-weight: 600;
+      color: var(--gray);
+      transition: var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .nav-link i {
+      font-size: 0.9rem;
+    }
+    
+    .nav-link:hover {
+      color: var(--primary);
+    }
+    
+    .nav-link.active {
+      color: var(--primary);
+    }
+    
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--light);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    /* هیرو سکشن */
+    .hero {
+      min-height: 100vh;
+      padding: 180px 5% 100px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: url('https://i.imgur.com/ebp8bh5.jpg') center/cover no-repeat;
+      opacity: 0.1;
+      z-index: 0;
+      animation: kenburns 30s infinite alternate;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .hero-title {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      color: var(--lighter);
+      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      line-height: 1.2;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: var(--primary-light);
+      margin-bottom: 40px;
+      font-weight: 400;
+      animation: fadeInUp 1s ease 0.2s forwards;
+      opacity: 0;
+    }
+    
+    .hero-text {
+      font-size: 1.1rem;
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto 40px;
+      animation: fadeInUp 1s ease 0.4s forwards;
+      opacity: 0;
+    }
+    
+    .hero-cta {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      animation: fadeInUp 1s ease 0.6s forwards;
+      opacity: 0;
+    }
+    
+    /* دکمه‌ها */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      transition: var(--transition-normal);
+      cursor: pointer;
+      border: none;
+      font-family: 'Vazirmatn', sans-serif;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      transition: var(--transition-normal);
+      z-index: -1;
+    }
+    
+    .btn:hover::before {
+      width: 100%;
+      left: 0;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: var(--darker);
+      box-shadow: var(--shadow-primary);
+    }
+    
+    .btn-primary:hover {
+      background: var(--primary-light);
+      transform: translateY(-3px);
+    }
+    
+    .btn-secondary {
+      background: var(--secondary);
+      color: var(--light);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--secondary-light);
+      transform: translateY(-3px);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background: var(--primary);
+      color: var(--darker);
+    }
+    
+    .btn-lg {
+      padding: 16px 32px;
+      font-size: 1.1rem;
+    }
+    
+    .btn-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      padding: 0;
+      justify-content: center;
+    }
+    
+    /* سکشن‌ها */
+    .section {
+      padding: 100px 5%;
+      position: relative;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 50px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      right: 0;
+      width: 60%;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), transparent);
+      border-radius: 2px;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    /* کارت انیمه */
+    .anime-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    
+    .anime-card {
+      background: var(--dark-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-normal);
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .anime-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+    
+    .card-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--primary);
+      color: var(--darker);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 900;
+      z-index: 2;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .card-media {
+      position: relative;
+      height: 380px;
+      overflow: hidden;
+    }
+    
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-slow);
+    }
+    
+    .anime-card:hover .card-img {
+      transform: scale(1.1);
+    }
+    
+    .card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+      padding: 20px;
+      opacity: 0;
+      transition: var(--transition-normal);
+    }
+    
+    .anime-card:hover .card-overlay {
+      opacity: 1;
+    }
+    
+    .card-rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    
+    .card-body {
+      padding: 20px;
+    }
+    
+    .card-title {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: var(--light);
+      transition: var(--transition-fast);
+    }
+    
+    .anime-card:hover .card-title {
+      color: var(--primary);
+    }
+    
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+    
+    .card-genres {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    
+    .genre-tag {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--gray);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      transition: var(--transition-fast);
+    }
+    
+    .anime-card:hover .genre-tag {
+      background: var(--primary);
+      color: var(--darker);
+    }
+    
+    .card-actions {
+      display: flex;
+      gap: 10px;
+    }
+    
+    /* سکشن ویژه */
+    .featured {
+      background: linear-gradient(to right, var(--darker) 0%, var(--dark-light) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .featured::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      background: url('https://i.imgur.com/V8YfY0R.jpg') center/cover no-repeat;
+      opacity: 0.1;
+      z-index: 0;
+      animation: kenburnsRight 30s infinite alternate;
+    }
+    
+    .featured-content {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .featured-media {
+      flex: 1;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      transition: var(--transition-normal);
+      position: relative;
+    }
+    
+    .featured-media:hover {
+      transform: scale(1.02);
+    }
+    
+    .featured-media::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.3), transparent 50%);
+    }
+    
+    .featured-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .featured-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: var(--accent);
+      color: var(--light);
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-weight: 900;
+      z-index: 2;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .featured-text {
+      flex: 1;
+    }
+    
+    .featured-title {
+      font-size: 2.8rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    
+    .featured-subtitle {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+    
+    .featured-description {
+      color: var(--gray);
+      margin-bottom: 30px;
+      line-height: 1.9;
+    }
+    
+    .featured-stats {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .stat-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      color: var(--darker);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    
+    .stat-text {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .stat-value {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--light);
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+    
+    /* سیستم تب‌ها */
+    .tab-system {
+      margin-bottom: 40px;
+    }
+    
+    .tab-header {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+    }
+    
+    .tab-header::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .tab-btn {
+      padding: 12px 24px;
+      background: var(--dark-light);
+      color: var(--gray);
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: var(--transition-normal);
+      flex-shrink: 0;
+    }
+    
+    .tab-btn:hover {
+      background: var(--secondary);
+      color: var(--light);
+    }
+    
+    .tab-btn.active {
+      background: var(--primary);
+      color: var(--darker);
+    }
+    
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    /* سیستم رتبه‌بندی */
+    .rating-system {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .stars {
+      display: flex;
+      gap: 3px;
+    }
+    
+    .star {
+      color: var(--gray);
+      font-size: 1.2rem;
+      transition: var(--transition-fast);
+    }
+    
+    .star.filled {
+      color: var(--primary);
+    }
+    
+    .rating-value {
+      font-weight: 700;
+      color: var(--light);
+    }
+    
+    /* خبرنامه */
+    .newsletter {
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
+      padding: 80px 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .newsletter::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+    }
+    
+    .newsletter::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: -80px;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+    }
+    
+    .newsletter-container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .newsletter-title {
+      font-size: 2.2rem;
+      color: var(--light);
+      margin-bottom: 20px;
+    }
+    
+    .newsletter-text {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      max-width: 600px;
+      margin: 0 auto;
+      gap: 15px;
+    }
+    
+    .newsletter-input {
+      flex: 1;
+      padding: 16px 24px;
+      border-radius: var(--radius-md);
+      border: none;
+      background: rgba(255, 255, 255, 0.2);
+      color: var(--light);
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 1rem;
+      transition: var(--transition-normal);
+      backdrop-filter: blur(5px);
+    }
+    
+    .newsletter-input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .newsletter-input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+    
+    /* فوتر */
+    .footer {
+      background: var(--darker);
+      padding: 80px 5% 40px;
+      position: relative;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      margin-bottom: 60px;
+    }
+    
+    .footer-column {
+      position: relative;
+    }
+    
+    .footer-title {
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--primary);
+    }
+    
+    .footer-text {
+      color: var(--gray);
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-link {
+      margin-bottom: 15px;
+    }
+    
+    .footer-link a {
+      color: var(--gray);
+      transition: var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .footer-link a:hover {
+      color: var(--primary);
+      transform: translateX(-5px);
+    }
+    
+    .footer-link i {
+      font-size: 0.8rem;
+      color: var(--primary);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+    }
+    
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: var(--dark-light);
+      border-radius: 50%;
+      color: var(--gray);
+      transition: var(--transition-normal);
+    }
+    
+    .social-link:hover {
+      background: var(--primary);
+      color: var(--darker);
+      transform: translateY(-5px);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    
+    /* دکمه بازگشت به بالا */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: var(--darker);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition-normal);
+      z-index: 999;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background: var(--primary-light);
+      transform: translateY(-5px);
+    }
+    
+    /* انیمیشن‌های سفارشی */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes kenburns {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.1);
+      }
+    }
+    
+    @keyframes kenburnsRight {
+      0% {
+        transform: scale(1) translateX(0);
+      }
+      100% {
+        transform: scale(1.1) translateX(20px);
+      }
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    
+    .pulse {
+      animation: pulse 3s infinite;
+    }
+    
+    /* افکت‌های ویژه */
+    .glow {
+      text-shadow: 0 0 10px rgba(255, 158, 63, 0.7);
+    }
+    
+    .hover-glow:hover {
+      box-shadow: 0 0 20px rgba(255, 158, 63, 0.5);
+    }
+    
+    /* اسکلتون لودینگ */
+    .skeleton {
+      background: linear-gradient(90deg, var(--dark-light) 25%, var(--secondary) 50%, var(--dark-light) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: var(--radius-md);
+    }
+    
+    @keyframes shimmer {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+    }
+    
+    /* ریسپانسیو */
+    @media (max-width: 1200px) {
+      .featured-content {
+        flex-direction: column;
+      }
+      
+      .featured::before {
+        width: 100%;
+        opacity: 0.08;
+      }
+      
+      .featured-media::after {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .hero-title {
+        font-size: 3.2rem;
+      }
+      
+      .section-title {
+        font-size: 2.2rem;
+      }
+      
+      .featured-title {
+        font-size: 2.2rem;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .nav {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        width: 80%;
+        max-width: 350px;
+        background: var(--darker);
+        flex-direction: column;
+        padding: 30px;
+        border-radius: 0 0 0 20px;
+        box-shadow: var(--shadow-lg);
+        transition: var(--transition-normal);
+        z-index: 999;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .nav.active {
+        right: 0;
+      }
+      
+      .nav-list {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+      }
+      
+      .hero-title {
+        font-size: 2.8rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.3rem;
+      }
+      
+      .hero-cta {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+      
+      .featured-stats {
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .section {
+        padding: 70px 5%;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .anime-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .card-media {
+        height: 320px;
+      }
+      
+      .featured-title {
+        font-size: 1.8rem;
+      }
+      
+      .newsletter-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- هدر -->
+  <header class="header" id="header">
+    <a href="#" class="logo">
+      <i class="fas fa-film logo-icon"></i>
+      <span>AnimeClassica</span>
+    </a>
+    
+    <nav class="nav" id="nav">
+      <ul class="nav-list">
+        <li><a href="#" class="nav-link active"><i class="fas fa-home"></i> خانه</a></li>
+        <li><a href="#archive" class="nav-link"><i class="fas fa-archive"></i> آرشیو</a></li>
+        <li><a href="#featured" class="nav-link"><i class="fas fa-star"></i> ویژه</a></li>
+        <li><a href="#genres" class="nav-link"><i class="fas fa-tags"></i> دسته‌بندی</a></li>
+        <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> تماس</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button class="btn btn-icon btn-secondary">
+          <i class="fas fa-search"></i>
+        </button>
+        <button class="btn btn-icon btn-primary">
+          <i class="fas fa-user"></i>
+        </button>
+      </div>
+    </nav>
+    
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+
+  <!-- هیرو سکشن -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title animate__animated animate__fadeInDown">کشف دوباره <span class="glow">انیمه‌های کلاسیک</span></h1>
+      <p class="hero-subtitle">سفری نوستالژیک به بهترین آثار تاریخ انیمه</p>
+      <p class="hero-text">در گنجینه دیجیتال ما، شاهکارهای ماندگار انیمه را دوباره کشف کنید. از آکیرا تا کابوی بیباپ، تمام آثار برتر در یک مکان.</p>
+      <div class="hero-cta">
+        <a href="#archive" class="btn btn-primary btn-lg pulse">
+          <i class="fas fa-play"></i>
+          شروع تماشا
+        </a>
+        <a href="#featured" class="btn btn-outline btn-lg">
+          <i class="fas fa-star"></i>
+          انیمه ویژه
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- آرشیو انیمه -->
+  <section class="section" id="archive">
+    <div class="container">
+      <h2 class="section-title">آرشیو انیمه‌های کلاسیک</h2>
+      
+      <div class="tab-system">
+        <div class="tab-header">
+          <button class="tab-btn active" data-tab="all">همه</button>
+          <button class="tab-btn" data-tab="action">اکشن</button>
+          <button class="tab-btn" data-tab="sci-fi">علمی تخیلی</button>
+          <button class="tab-btn" data-tab="fantasy">فانتزی</button>
+          <button class="tab-btn" data-tab="adventure">ماجراجویی</button>
+          <button class="tab-btn" data-tab="drama">درام</button>
+          <button class="tab-btn" data-tab="comedy">کمدی</button>
+          <button class="tab-btn" data-tab="mecha">مکا</button>
+        </div>
+        
+        <div class="tab-content active" id="all">
+          <div class="anime-grid" id="animeList"></div>
+        </div>
+        
+        <div class="tab-content" id="action">
+          <div class="anime-grid" id="actionAnime"></div>
+        </div>
+        
+        <div class="tab-content" id="sci-fi">
+          <div class="anime-grid" id="sciFiAnime"></div>
+        </div>
+        
+        <div class="tab-content" id="fantasy">
+          <div class="anime-grid" id="fantasyAnime"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- سکشن ویژه -->
+  <section class="section featured" id="featured">
+    <div class="container">
+      <div class="featured-content">
+        <div class="featured-media">
+          <span class="featured-badge">انیمه ماه</span>
+          <img src="https://i.imgur.com/V8YfY0R.jpg" alt="Cowboy Bebop" class="featured-img">
+        </div>
+        
+        <div class="featured-text">
+          <h2 class="featured-title">کابوی بیباپ</h2>
+          <p class="featured-subtitle">فضایی، نئو-نوآر، جاز</p>
+          
+          <div class="rating-system">
+            <div class="stars">
+              <i class="fas fa-star star filled"></i>
+              <i class="fas fa-star star filled"></i>
+              <i class="fas fa-star star filled"></i>
+              <i class="fas fa-star star filled"></i>
+              <i class="fas fa-star star filled"></i>
+            </div>
+            <span class="rating-value">9.1/10</span>
+          </div>
+          
+          <p class="featured-description">
+            کابوی بیباپ یک انیمه ژاپنی در سبک نئو-نوآر و فضایی است که در سال ۱۹۹۸ ساخته شد. این مجموعه داستان گروهی از شکارچیان جایزه‌بگیر را روایت می‌کند که با سفینه خود به نام «بیباپ» در منظومه شمسی سفر می‌کنند. این انیمه با ترکیب موسیقی جاز، اکشن و عناصر فلسفی به یکی از تأثیرگذارترین آثار تاریخ انیمه تبدیل شده است.
+          </p>
+          
+          <div class="featured-stats">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-calendar-alt"></i>
+              </div>
+              <div class="stat-text">
+                <span class="stat-value">1998</span>
+                <span class="stat-label">سال انتشار</span>
+              </div>
+            </div>
+            
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-list-ol"></i>
+              </div>
+              <div class="stat-text">
+                <span class="stat-value">26</span>
+                <span class="stat-label">تعداد قسمتها</span>
+              </div>
+            </div>
+            
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-text">
+                <span class="stat-value">24min</span>
+                <span class="stat-label">مدت هر قسمت</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card-actions">
+            <a href="#" class="btn btn-primary btn-lg">
+              <i class="fas fa-play"></i>
+              تماشا کنید
+            </a>
+            <a href="#" class="btn btn-outline btn-lg">
+              <i class="fas fa-info-circle"></i>
+              جزئیات بیشتر
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- دسته‌بندی‌ها -->
+  <section class="section" id="genres">
+    <div class="container">
+      <h2 class="section-title">کاوش بر اساس ژانر</h2>
+      
+      <div class="anime-grid">
+        <div class="anime-card hover-glow" style="background: linear-gradient(to bottom, #E74C3C, #C0392B);">
+          <div class="card-body">
+            <h3 class="card-title">اکشن</h3>
+            <p class="card-meta">120 عنوان</p>
+            <a href="#" class="btn btn-outline" style="border-color: var(--light); color: var(--light);">
+              <i class="fas fa-arrow-left"></i>
+              مشاهده
+            </a>
+          </div>
+        </div>
+        
+        <div class="anime-card hover-glow" style="background: linear-gradient(to bottom, #3498DB, #2980B9);">
+          <div class="card-body">
+            <h3 class="card-title">علمی تخیلی</h3>
+            <p class="card-meta">85 عنوان</p>
+            <a href="#" class="btn btn-outline" style="border-color: var(--light); color: var(--light);">
+              <i class="fas fa-arrow-left"></i>
+              مشاهده
+            </a>
+          </div>
+        </div>
+        
+        <div class="anime-card hover-glow" style="background: linear-gradient(to bottom, #9B59B6, #8E44AD);">
+          <div class="card-body">
+            <h3 class="card-title">فانتزی</h3>
+            <p class="card-meta">76 عنوان</p>
+            <a href="#" class="btn btn-outline" style="border-color: var(--light); color: var(--light);">
+              <i class="fas fa-arrow-left"></i>
+              مشاهده
+            </a>
+          </div>
+        </div>
+        
+        <div class="anime-card hover-glow" style="background: linear-gradient(to bottom, #1ABC9C, #16A085);">
+          <div class="card-body">
+            <h3 class="card-title">ماجراجویی</h3>
+            <p class="card-meta">92 عنوان</p>
+            <a href="#" class="btn btn-outline" style="border-color: var(--light); color: var(--light);">
+              <i class="fas fa-arrow-left"></i>
+              مشاهده
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- خبرنامه -->
+  <section class="newsletter">
+    <div class="newsletter-container">
+      <h2 class="newsletter-title">به خانواده AnimeClassica بپیوندید</h2>
+      <p class="newsletter-text">برای دریافت جدیدترین اخبار، پیشنهادات ویژه و اطلاع از اضافه شدن انیمه‌های جدید، ایمیل خود را ثبت کنید.</p>
+      
+      <form class="newsletter-form">
+        <input type="email" class="newsletter-input" placeholder="آدرس ایمیل شما" required>
+        <button type="submit" class="btn btn-primary btn-lg">
+          <i class="fas fa-paper-plane"></i>
+          عضویت
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- فوتر -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3 class="footer-title">درباره ما</h3>
+          <p class="footer-text">AnimeClassica مرجع تخصصی انیمه‌های کلاسیک و نوستالژیک است که با هدف حفظ و معرفی این آثار ارزشمند ایجاد شده است.</p>
+          
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3 class="footer-title">لینک‌های سریع</h3>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#"><i class="fas fa-chevron-left"></i> صفحه اصلی</a></li>
+            <li class="footer-link"><a href="#archive"><i class="fas fa-chevron-left"></i> آرشیو انیمه</a></li>
+            <li class="footer-link"><a href="#featured"><i class="fas fa-chevron-left"></i> انیمه‌های ویژه</a></li>
+            <li class="footer-link"><a href="#genres"><i class="fas fa-chevron-left"></i> دسته‌بندی‌ها</a></li>
+            <li class="footer-link"><a href="#contact"><i class="fas fa-chevron-left"></i> تماس با ما</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3 class="footer-title">ژانرهای محبوب</h3>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#"><i class="fas fa-chevron-left"></i> انیمه‌های دهه 80</a></li>
+            <li class="footer-link"><a href="#"><i class="fas fa-chevron-left"></i> انیمه‌های دهه 90</a></li>
+            <li class="footer-link"><a href="#"><i class="fas fa-chevron-left"></i> آثار استودیو جیبلی</a></li>
+            <li class="footer-link"><a href="#"><i class="fas fa-chevron-left"></i> انیمه‌های اکشن</a></li>
+            <li class="footer-link"><a href="#"><i class="fas fa-chevron-left"></i> انیمه‌های علمی تخیلی</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3 class="footer-title">تماس با ما</h3>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="mailto:info@animeclassica.com"><i class="fas fa-envelope"></i> info@animeclassica.com</a></li>
+            <li class="footer-link"><a href="tel:+989123456789"><i class="fas fa-phone"></i> 09123456789</a></li>
+            <li class="footer-link"><a href="#"><i class="fas fa-map-marker-alt"></i> تهران، ایران</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        طراحی شده با <i class="fas fa-heart" style="color: var(--accent);"></i> برای دوستداران انیمه‌های کلاسیک © 2025 AnimeClassica. تمام حقوق محفوظ است.
+      </div>
+    </div>
+  </footer>
+
+  <!-- دکمه بازگشت به بالا -->
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <script>
+    // داده‌های انیمه
+    const animeData = [
+      { 
+        id: 1,
+        title: "Cowboy Bebop", 
+        image: "https://i.imgur.com/V8YfY0R.jpg",
+        year: "1998",
+        episodes: "26",
+        rating: "9.1",
+        duration: "24min",
+        genres: ["اکشن", "علمی تخیلی", "فضایی"],
+        badge: "پرطرفدار",
+        description: "داستان شکارچیان جایزه‌بگیری که با سفینه بیباپ در منظومه شمسی سفر می‌کنند.",
+        isFeatured: true
+      },
+      { 
+        id: 2,
+        title: "Akira", 
+        image: "https://i.imgur.com/ebp8bh5.jpg",
+        year: "1988",
+        episodes: "فیلم",
+        rating: "8.9",
+        duration: "124min",
+        genres: ["علمی تخیلی", "سایبرپانک", "روانی"],
+        badge: "کلاسیک",
+        description: "در نئو-توکیوی پسا-آخرالزمانی، یک موتورسوار نوجوان قدرت‌های روانی عجیبی کسب می‌کند.",
+        isFeatured: false
+      },
+      { 
+        id: 3,
+        title: "Ghost in the Shell", 
+        image: "https://i.imgur.com/DWBo2Z2.jpg",
+        year: "1995",
+        episodes: "فیلم",
+        rating: "8.8",
+        duration: "83min",
+        genres: ["علمی تخیلی", "سایبرپانک", "فلسفی"],
+        badge: "تاثیرگذار",
+        description: "ماجراهای بخش ۹ به رهبری موتورو کوسانگی در دنیایی با تکنولوژی پیشرفته.",
+        isFeatured: false
+      },
+      { 
+        id: 4,
+        title: "Trigun", 
+        image: "https://i.imgur.com/npfwIYm.jpg",
+        year: "1998",
+        episodes: "26",
+        rating: "8.3",
+        duration: "24min",
+        genres: ["اکشن", "کمدی", "وسترن فضایی"],
+        badge: "نوستالژیک",
+        description: "ماجراهای واش د میلیونز، خطرناک‌ترین مرد جهان با جایزه ۶۰ میلیاردی.",
+        isFeatured: false
+      },
+      { 
+        id: 5,
+        title: "Samurai Champloo", 
+        image: "https://i.imgur.com/pB7nCni.jpg",
+        year: "2004",
+        episodes: "26",
+        rating: "8.5",
+        duration: "24min",
+        genres: ["اکشن", "ماجراجویی", "تاریخی"],
+        badge: "ویژه",
+        description: "سه فرد غریبه با شخصیت‌های کاملاً متفاوت در جستجوی سامورایی که بوی گل آفتابگردان می‌دهد.",
+        isFeatured: false
+      },
+      { 
+        id: 6,
+        title: "Berserk (1997)", 
+        image: "https://i.imgur.com/5Ke0DyJ.jpg",
+        year: "1997",
+        episodes: "25",
+        rating: "8.7",
+        duration: "24min",
+        genres: ["فانتزی تاریک", "اکشن", "درام"],
+        badge: "کالت",
+        description: "داستان گاتس، شمشیرزنی تنها که به دنبال انتقام از دوست سابقش گریفیت است.",
+        isFeatured: false
+      },
+      { 
+        id: 7,
+        title: "Neon Genesis Evangelion", 
+        image: "https://i.imgur.com/JcEQwUY.jpg",
+        year: "1995",
+        episodes: "26",
+        rating: "8.5",
+        duration: "24min",
+        genres: ["علمی تخیلی", "روانی", "مکا"],
+        badge: "انقلابی",
+        description: "شینجی ایکاری باید با موجوداتی عجیب به نام فرشته‌ها مبارزه کند.",
+        isFeatured: false
+      },
+      { 
+        id: 8,
+        title: "Dragon Ball Z", 
+        image: "https://i.imgur.com/8ZkDnWm.jpg",
+        year: "1989",
+        episodes: "291",
+        rating: "8.2",
+        duration: "24min",
+        genres: ["اکشن", "ماجراجویی", "فانتزی"],
+        badge: "نمادین",
+        description: "ماجراهای گوکو و دوستانش در دفاع از زمین در برابر تهدیدات مختلف.",
+        isFeatured: false
+      },
+      { 
+        id: 9,
+        title: "Serial Experiments Lain", 
+        image: "https://i.imgur.com/mX8nZqT.jpg",
+        year: "1998",
+        episodes: "13",
+        rating: "8.1",
+        duration: "24min",
+        genres: ["علمی تخیلی", "روانی", "فلسفی"],
+        badge: "کالت",
+        description: "لین ایواکورا درگیر دنیای مرموز شبکه ارتباطی وایر شده است.",
+        isFeatured: false
+      },
+      { 
+        id: 10,
+        title: "Perfect Blue", 
+        image: "https://i.imgur.com/7VQZz3J.jpg",
+        year: "1997",
+        episodes: "فیلم",
+        rating: "8.0",
+        duration: "81min",
+        genres: ["روانی", "درام", "تریلر"],
+        badge: "کلاسیک",
+        description: "خواننده پاپی که حرفه‌اش را برای بازیگری ترک می‌کند، دچار توهمات وحشتناکی می‌شود.",
+        isFeatured: false
+      },
+      { 
+        id: 11,
+        title: "Rurouni Kenshin", 
+        image: "https://i.imgur.com/9tQhXgJ.jpg",
+        year: "1996",
+        episodes: "94",
+        rating: "8.3",
+        duration: "24min",
+        genres: ["اکشن", "تاریخی", "درام"],
+        badge: "نوستالژیک",
+        description: "کنسین، قاتلی که قسم خورده دیگر نکشد، در دوره میجی به مردم کمک می‌کند.",
+        isFeatured: false
+      },
+      { 
+        id: 12,
+        title: "Outlaw Star", 
+        image: "https://i.imgur.com/Lk2XHpC.jpg",
+        year: "1998",
+        episodes: "26",
+        rating: "7.8",
+        duration: "24min",
+        genres: ["اکشن", "فضایی", "ماجراجویی"],
+        badge: "کلاسیک",
+        description: "ماجراهای جین استار و همسفرانش در سفینه فضایی Outlaw Star.",
+        isFeatured: false
+      }
+    ];
+
+    // رندر کارت‌های انیمه
+    function renderAnimeCards(animes, containerId) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+      
+      animes.forEach(anime => {
+        const card = document.createElement('div');
+        card.className = 'anime-card';
+        card.innerHTML = `
+          <div class="card-media">
+            <span class="card-badge">${anime.badge}</span>
+            <img src="${anime.image}" alt="${anime.title}" class="card-img" loading="lazy">
+            <div class="card-overlay">
+              <div class="card-rating">
+                <i class="fas fa-star"></i>
+                <span>${anime.rating}</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">${anime.title}</h3>
+            <div class="card-meta">
+              <span>${anime.year}</span>
+              <span>${anime.episodes}</span>
+            </div>
+            <div class="card-genres">
+              ${anime.genres.map(genre => `<span class="genre-tag">${genre}</span>`).join('')}
+            </div>
+            <div class="card-actions">
+              <a href="#" class="btn btn-primary" data-anime-id="${anime.id}">
+                <i class="fas fa-play"></i>
+                تماشا
+              </a>
+              <a href="#" class="btn btn-outline" data-anime-id="${anime.id}">
+                <i class="fas fa-info-circle"></i>
+                جزئیات
+              </a>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // فیلتر انیمه‌ها بر اساس ژانر
+    function filterAnimeByGenre(genre) {
+      if (genre === 'all') {
+        return animeData;
+      }
+      
+      return animeData.filter(anime => anime.genres.includes(genre));
+    }
+
+    // سیستم تب‌ها
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab');
+        
+        // حذف کلاس active از همه تب‌ها
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        
+        // اضافه کردن کلاس active به تب انتخاب شده
+        button.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+        
+        // رندر انیمه‌های مربوطه
+        if (tabId === 'action') {
+          renderAnimeCards(filterAnimeByGenre('اکشن'), 'actionAnime');
+        } else if (tabId === 'sci-fi') {
+          renderAnimeCards(filterAnimeByGenre('علمی تخیلی'), 'sciFiAnime');
+        } else if (tabId === 'fantasy') {
+          renderAnimeCards(filterAnimeByGenre('فانتزی'), 'fantasyAnime');
+        }
+      });
+    });
+
+    // منوی موبایل
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const nav = document.getElementById('nav');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      mobileMenuBtn.innerHTML = nav.classList.contains('active') ? 
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+
+    // اسکرول هدر
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // دکمه بازگشت به بالا
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.add('active');
+      } else {
+        backToTop.classList.remove('active');
+      }
+    });
+    
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // اسکرول نرم برای لینک‌ها
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // بستن منوی موبایل در صورت باز بودن
+          if (nav.classList.contains('active')) {
+            nav.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+          }
+        }
+      });
+    });
+
+    // مقداردهی اولیه
+    document.addEventListener('DOMContentLoaded', () => {
+      renderAnimeCards(animeData, 'animeList');
+      
+      // رندر انیمه‌های اکشن برای تب اکشن
+      renderAnimeCards(filterAnimeByGenre('اکشن'), 'actionAnime');
+      
+      // رندر انیمه‌های علمی تخیلی برای تب علمی تخیلی
+      renderAnimeCards(filterAnimeByGenre('علمی تخیلی'), 'sciFiAnime');
+      
+      // رندر انیمه‌های فانتزی برای تب فانتزی
+      renderAnimeCards(filterAnimeByGenre('فانتزی'), 'fantasyAnime');
+    });
+  </script>
+</body>
+</html>
